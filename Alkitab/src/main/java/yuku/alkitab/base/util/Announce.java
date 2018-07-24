@@ -45,7 +45,7 @@ public abstract class Announce {
 		Background.run(() -> {
 			try {
 				SystemClock.sleep(10000); // wait 10 seconds
-				checkAnnouncements_worker();
+				//checkAnnouncements_worker();
 			} catch (Exception e) { // handle all exceptions, because we don't want the main app to crash because of this.
 				AppLog.d(TAG, "@@checkAnnouncements", e);
 			}
@@ -137,9 +137,7 @@ public abstract class Announce {
 
 	private static AnnounceCheckResult getAnnouncements() throws IOException {
 		final Call call = App.okhttp().newCall(
-			new Request.Builder()
-				.url(BuildConfig.SERVER_HOST + "announce/check")
-				.post(
+				new Request.Builder().url(BuildConfig.SERVER_HOST + "announce/check").post(
 					new FormBody.Builder()
 						.add("installation_info", U.getInstallationInfoJson())
 						.build()

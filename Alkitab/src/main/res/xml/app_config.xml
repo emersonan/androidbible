@@ -2,19 +2,19 @@
 <config>
     <menu
         devotion="true"
-        songs="true"
-		dictionary="true"
-		guide="true"
-		commentary="true"
+        songs="false"
+		dictionary="false"
+		guide="false"
+		commentary="false"
 	/>
 
 	<devotions>
-		<devotion name="sh" />
+		<devotion name="dd" />
 		<devotion name="rh" />
 		<devotion name="meid-a" />
 		<devotion name="roc" />
 		<devotion name="me-en" />
 	</devotions>
 
-	<internal locale="in" shortName="DDD"      longName="Dummy Debug Data" prefix="ddd"  preset_name='in-ddd' />
+	<internal locale="pt" shortName="ACF"   longName="Almeida Corrigida Fiel" prefix="ddd"  preset_name='in-ddd' />
 </config>

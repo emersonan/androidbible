@@ -57,6 +57,7 @@ import yuku.alkitab.util.Ari;
 import yuku.alkitab.util.IntArrayList;
 import yuku.alkitabintegration.display.Launcher;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -638,7 +639,7 @@ public class SearchActivity extends BaseActivity {
 	
 	protected SearchEngine.Query getQuery() {
 		SearchEngine.Query res = new SearchEngine.Query();
-		res.query_string = searchView.getQuery().toString();
+		res.query_string = removerAcentos(searchView.getQuery().toString());
 		res.bookIds = selectedBookIds;
 		return res;
 	}
@@ -677,7 +678,7 @@ public class SearchActivity extends BaseActivity {
 				return;
 			}
 		}
-		
+
 		final String[] tokens = QueryTokenizer.tokenize(query_string);
 
 		final MaterialDialog pd = new MaterialDialog.Builder(this)
@@ -807,6 +808,10 @@ public class SearchActivity extends BaseActivity {
 				return Ari.encode(bookId, chapter_1, verse_1);
 			}
 		}.execute();
+	}
+
+	private String removerAcentos(String string) {
+		return Normalizer.normalize(string, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
 	}
 
 	@NonNull SearchHistory loadSearchHistory() {

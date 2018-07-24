@@ -545,7 +545,7 @@ public class InternalDb {
 				case RH: {
 					return new ArticleRenunganHarian(date, c.getString(col_body), c.getInt(col_readyToUse) > 0);
 				}
-				case SH: {
+				case DD: {
 					return new ArticleSantapanHarian(date, c.getString(col_body), c.getInt(col_readyToUse) > 0);
 				}
 				case ME_EN: {

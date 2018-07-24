@@ -24,6 +24,6 @@ public class ArticleSantapanHarian extends ArticleFromSabda {
 
 	@Override
 	public DevotionActivity.DevotionKind getKind() {
-		return DevotionActivity.DevotionKind.SH;
+		return DevotionActivity.DevotionKind.DD;
 	}
 }

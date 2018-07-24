@@ -67,6 +67,14 @@ public class DevotionActivity extends BaseLeftDrawerActivity implements LeftDraw
 		}
 	};
 
+    static final ThreadLocal<SimpleDateFormat> D = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("D", new Locale("pt", "BR"));
+        }
+    };
+
+
 	TwofingerLinearLayout.Listener root_listener = new TwofingerLinearLayout.OnefingerListener() {
 		@Override
 		public void onOnefingerLeft() {
@@ -116,7 +124,7 @@ public class DevotionActivity extends BaseLeftDrawerActivity implements LeftDraw
 	}
 
 	public enum DevotionKind {
-		SH("sh", "Santapan Harian", "Persekutuan Pembaca Alkitab") {
+		DD("dd", "Devocional Diário", "Lendo, Entendento, Acreditando e Praticando") {
 			@Override
 			public DevotionArticle getArticle(final String date) {
 				return new ArticleSantapanHarian(date);
@@ -124,7 +132,13 @@ public class DevotionActivity extends BaseLeftDrawerActivity implements LeftDraw
 
 			@Override
 			public String getShareUrl(final SimpleDateFormat format, final Date date) {
-				return "http://www.sabda.org/publikasi/e-sh/print/?edisi=" + yyyymmdd.get().format(date);
+                int idartigo;
+                idartigo = 3086 + Integer.parseInt(D.get().format(date));
+				return "http://www.devocionaldiario.com.br/ver_versiculos.php?id=" + Integer.toString(idartigo);
+			}
+			@Override
+			public int getPrefetchDays() {
+				return 30;
 			}
 		},
 		MEID_A("meid-a", "Renungan Pagi", "Charles H. Spurgeon") {
@@ -207,7 +221,7 @@ public class DevotionActivity extends BaseLeftDrawerActivity implements LeftDraw
 		}
 	}
 
-	public static final DevotionKind DEFAULT_DEVOTION_KIND = DevotionKind.SH;
+	public static final DevotionKind DEFAULT_DEVOTION_KIND = DevotionKind.DD;
 
 	DrawerLayout drawerLayout;
 	LeftDrawer.Devotion leftDrawer;

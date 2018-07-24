@@ -599,7 +599,7 @@ public class IsiActivity extends BaseLeftDrawerActivity implements XrefDialog.Xr
 
 		App.getLbm().registerReceiver(reloadAttributeMapReceiver, new IntentFilter(ACTION_ATTRIBUTE_MAP_CHANGED));
 
-		Announce.checkAnnouncements();
+		//Announce.checkAnnouncements();
 
 		App.getLbm().registerReceiver(needsRestartReceiver, new IntentFilter(ACTION_NEEDS_RESTART));
 		AppLog.d(TAG, "@@onCreate end");

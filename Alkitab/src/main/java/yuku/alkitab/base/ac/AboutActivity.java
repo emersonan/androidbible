@@ -36,7 +36,7 @@ import static yuku.alkitab.base.util.Literals.List;
 public class AboutActivity extends BaseActivity {
 	public static final String TAG = AboutActivity.class.getSimpleName();
 
-	public static final int LOADER_announce = 1;
+	public static final int LOADER_announce = 0;
 
 	View root;
 	TextView tVersion;
@@ -132,7 +132,7 @@ public class AboutActivity extends BaseActivity {
 		bHelp = V.get(this, R.id.bHelp);
 		bHelp.setOnClickListener(v -> {
 			App.trackEvent("help_button_announcement");
-			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://alkitab.app/guide?utm_source=app&utm_medium=button&utm_campaign=help")));
+			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://ibam.onome.com.br")));
 		});
 
 		bMaterialSources = V.get(this, R.id.bMaterialSources);
@@ -184,7 +184,7 @@ public class AboutActivity extends BaseActivity {
 		setAnnouncementState(AnnouncementState.init);
 
 		manualAnnouncementReload.set(false);
-		getLoaderManager().initLoader(LOADER_announce, null, announcementLoaderCallbacks).forceLoad();
+		//getLoaderManager().initLoader(LOADER_announce, null, announcementLoaderCallbacks).forceLoad();
 
 		imgLogo.setImageDrawable(ResourcesCompat.getDrawableForDensity(getResources(), R.drawable.ic_launcher, DisplayMetrics.DENSITY_XXXHIGH, null));
 

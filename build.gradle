@@ -20,7 +20,7 @@ allprojects {
 }
 
 ext {
-    SERVER_HOST = 'https://alkitab-host.appspot.com/'
+    SERVER_HOST = 'https://app.onome.com.br/ibam/'
     compileSdkVersion = 27
     minSdkVersion = 14
     targetSdkVersion = 27
